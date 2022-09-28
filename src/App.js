@@ -1,10 +1,12 @@
+import React, { useState } from 'react';
 import './App.css';
 import Expenses from './components/Expenses/Expenses'
+import NewExpense from './components/NewExpense/NewExpense'
 function App() {
-  const expenses = [
+  const MOCK_EXPENSES = [
     {
       id: 'e1',
-      title: 'Toilet Paper',
+      title: 'Paper',
       amount: 94.12,
       date: new Date(2020, 7, 14),
     },
@@ -22,9 +24,17 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const [expenses, setExpenses] = useState(MOCK_EXPENSES);
+
+  const addExpenseHandler = (expense) => { 
+    setExpenses(prevExpenses => {
+      return [expense, ...prevExpenses];
+    });
+   }
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses}/>
     </div>
   );
