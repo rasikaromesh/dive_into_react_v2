@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import AppButton from "../Common/AppButton";
+
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
@@ -19,6 +22,7 @@ const ExpenseForm = (props) => {
   };
 
   const submitHandler = (event) => {
+    console.log("submot");
     event.preventDefault();
     props.onSaveExpenseData({
       title: enteredTitle,
@@ -44,7 +48,13 @@ const ExpenseForm = (props) => {
         </div>
         <div className="expense-form__control">
           <label>Amount</label>
-          <input type="number" value={enteredAmount} onChange={amountChangeHandler} min="0.01" step="0.01" />
+          <input
+            type="number"
+            value={enteredAmount}
+            onChange={amountChangeHandler}
+            min="0.01"
+            step="0.01"
+          />
         </div>
         <div className="expense-form__control">
           <label>Date</label>
@@ -57,8 +67,18 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className="expense-form__actions">
-        <button type="submit">Add Expense</button>
+      <div className="expense-form__control expense-form__actions-group">
+        <AppButton
+          className="expense-form__actions"
+          type="button"
+          onClick={props.onCancel}
+          lable="Cancel"
+        />
+        <AppButton
+          type="submit"
+          lable="Add Expense"
+          className="expense-form__actions"
+        />
       </div>
     </form>
   );
