@@ -22,7 +22,6 @@ const ExpenseForm = (props) => {
   };
 
   const submitHandler = (event) => {
-    console.log("submot");
     event.preventDefault();
     props.onSaveExpenseData({
       title: enteredTitle,
