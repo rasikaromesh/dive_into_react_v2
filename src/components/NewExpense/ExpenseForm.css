@@ -20,7 +20,13 @@
     width: 20rem;
     max-width: 100%;
   }
+
+  .expense-form__actions-group{
+    display: flex;
+    justify-content: flex-end;
+  }
   
   .expense-form__actions {
     text-align: right;
+    gap: 1rem;
   }
